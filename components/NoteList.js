@@ -3,6 +3,7 @@ import Note from './Note'
 
 // A functional stateless component
 const NoteList = (props) => {
+  console.log(props);
   if (props.notes.length < 1) return null
   return (
     <ul className="list-group">

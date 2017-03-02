@@ -4,11 +4,21 @@ class Note extends Component {
   constructor(props) {
     super(props)
     // set initial state with `isEditing` and `isHoveringButtons` to initial boolean values
+    this.state = {
+      isEditing: false,
+      isHoveringButtons: false
+    }
     // bind functions here
+    this.delete = this.delete.bind(this);
+    this.update = this.update.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  delete() {
+  delete(props) {
     // Send `noteId` of note back up to for deletion
+    this.props.deleteNote(this.props.noteId);
   }
 
   update() {
@@ -18,14 +28,17 @@ class Note extends Component {
 
   toggleEdit() {
     // toggle isEditing state
+    this.setState({isEditing: !this.state.isEditing});
   }
 
   handleMouseEnter() {
     // set `isHoveringButtons` based on mouse enter event
+    this.setState({isHoveringButtons: true});
   }
 
   handleMouseLeave() {
     // set `isHoveringButtons` based on mouse leave event
+    this.setState({isHoveringButtons: false});
   }
 
   renderEditButtons() {
